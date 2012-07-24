@@ -1,12 +1,5 @@
 #!/usr/bin/env zsh
 
-echo "Checking for SSH key, generating one if it doesn't exist ..."
-  [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
-
-echo "Copying public key to clipboard. Paste it into your Github account ..."
-  [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy
-  open https://github.com/account/ssh
-
 echo "Installing Homebrew, a good OS X package manager ..."
   /usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
   brew update
@@ -17,17 +10,8 @@ echo "Put Homebrew location earlier in PATH ..."
 export PATH='/usr/local/bin:$PATH'" >> ~/.zshrc
   source ~/.zshrc
 
-echo "Installing Postgres, a good open source relational database ..."
-  brew install postgres --no-python
-
-echo "Installing Redis, a good key-value database ..."
-  brew install redis
-
 echo "Installing ack, a good way to search through files ..."
   brew install ack
-
-echo "Installing tmux, a good way to save project state and switch between projects ..."
-  brew install tmux
 
 echo "Installing ImageMagick, good for cropping and re-sizing images ..."
   brew install imagemagick
@@ -43,4 +27,3 @@ echo "Installing RVM (Ruby Version Manager) ..."
   source ~/.zshrc
 
 zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/ruby)
-zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/heroku)
